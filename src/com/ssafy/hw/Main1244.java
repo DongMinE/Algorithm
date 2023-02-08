@@ -70,10 +70,6 @@ public class Main1244 {
 //		else(stuArr[sex][0] == 2) {
 //		int start = stuArr[sex][1] - 1;
 //		if(sex == 1) {
-//			for(int j=0; j<T; j++) //뽑은 수의 배수 위치에 있는 스위치의 상태를 바꾼다.
-//				if((j+1) % start == 0)
-//					arr[j] = arr[j] == 0? 1: 0;
-//		}
 //		if (arr[start] == 1) {
 //			arr[start]--;
 //		}
