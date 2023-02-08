@@ -9,10 +9,9 @@ public class 아침순열조합 {
 	static int[] inputs, numbers;
 	static boolean[] visited;
 	static int cunt;
-	
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
 		N = sc.nextInt();
 		R = sc.nextInt();
 		inputs = new int[N];

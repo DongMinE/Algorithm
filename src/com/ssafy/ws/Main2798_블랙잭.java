@@ -36,7 +36,7 @@ public class Main2798_블랙잭 {
 			return;
 
 		}
-		for  (int i = start; i < n; i++) {
+		for (int i = start; i < n; i++) {
 			comb(cnt + 1, i + 1, sum + data[i]);
 		}
 	}
