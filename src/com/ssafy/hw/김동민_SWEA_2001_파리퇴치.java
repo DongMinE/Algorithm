@@ -1,8 +1,8 @@
-package com.ssafy.ws.SWEA.D2;
+package com.ssafy.hw;
 
 import java.util.Scanner;
 
-public class Solution2001 {
+public class 김동민_SWEA_2001_파리퇴치 {
 	static int[][] arr;
 	static int n, m;
 	static int kill, firstkill;
