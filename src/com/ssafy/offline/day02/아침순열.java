@@ -27,11 +27,11 @@ public class 아침순열 {
 			return;
 		}
 		for (int i = 0; i < N; i++) {
-			//if (visited[i]) continue;
+			if (visited[i]) continue;
 			
-			//visited[i] = true;
+			visited[i] = true;
 			numbers[cnt] = input[i];
-			//visited[i] = false;
+			visited[i] = false;
 			perm(cnt+1);
 		}
 	}

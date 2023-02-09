@@ -34,7 +34,6 @@ public class 아침순열조합 {
 	private static void perm(int cnt) {
 		if (cnt == R) {
 			System.out.println(Arrays.toString(numbers));
-			cunt++;
 			return;
 		}
 
@@ -52,7 +51,6 @@ public class 아침순열조합 {
 	private static void comb(int cnt, int start) {
 		if (cnt == R) {
 			System.out.println(Arrays.toString(numbers));
-			cunt++;
 			return;
 		}
 		for (int i = start; i < N; i++) {

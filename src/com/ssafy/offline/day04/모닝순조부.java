@@ -30,9 +30,7 @@ public class 모닝순조부 {
 
 	private static void sebset() {
 		for (int i = 0; i < (1 << N); i++) {
-			//System.out.print("(i : " + i + ") ");
 			for (int j = 0; j < N; j++) {
-				//System.out.print("(j: "+ j + ") ");
 				if ((i & (1 << j)) == 0) continue;
 				System.out.print(input[j] + " ");
 			}
