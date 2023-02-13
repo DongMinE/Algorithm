@@ -1,4 +1,4 @@
-package com.supply;
+package com.supply.class3th;
 
 public class Recursive05 {
 	static int[] arr = {1,3,5};

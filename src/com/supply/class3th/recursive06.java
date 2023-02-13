@@ -1,4 +1,4 @@
-package com.supply;
+package com.supply.class3th;
 
 import java.util.Arrays;
 
