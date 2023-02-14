@@ -3,69 +3,60 @@ package com.ssafy.ws.BOJ;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class S1_16926배열돌리기 {
+	static int[][] board;
+    static int n, m, r;
 
-	public static void main(String[] args) throws IOException {
-		int[] dr = { 1, 0, -1, 0 };
-		int[] dc = { 0, 1, 0, -1 };
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        n = Integer.parseInt(st.nextToken());
+        m = Integer.parseInt(st.nextToken());
+        r = Integer.parseInt(st.nextToken());
+        board = new int[n][m];
 
-		int N = Integer.parseInt(st.nextToken()); // 가로
-		int M = Integer.parseInt(st.nextToken()); // 세로
-		int R = Integer.parseInt(st.nextToken()); // 돌려돌려 돌림판
-		int[][] arr = new int[N][M];
-		int[][] resarr = new int[N][M];
-		int dx = 0;
-		// 원래 배열
-		for (int i = 0; i < N; i++) {
-			st = new StringTokenizer(br.readLine());
-			for (int j = 0; j < M; j++) {
-				arr[i][j] = Integer.parseInt(st.nextToken());
-			}
-		}
-		int round = 0; //네모안에서 MAx
-		int k = 0; //네모안에서 0 부터
-		int n = N;
-		int m = M;
-		int temp = 0;
-		int istart = 0;
-		int jstart = 0;
-		// 돌리기
-		for (int t = 0; t < m / 2; t++) {
-			if (n == m) {
-				round = ((n-2)*4)+4;
-			} else {
-				round = n;
-			}
-			for (int i = istart, j=jstart; k < round; k++) {
-					temp = arr[i][j];
-					i += dr[dx];
-					j += dc[dx];
-					resarr[i][j] = temp;
-					if (i >= 0 && i < n-1 && j >= 0 && j < m-1) {
-						continue;
-					} else {
-						i -= dr[dx];
-						j -= dc[dx];
-						dx = (dx + 1) % 4;
-						i += dr[dx];
-						j += dc[dx];
-					}
-			}
-			n-=2;
-			m-=2;
-			istart++;
-			jstart++;
-		}
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < M; j++) {
-				System.out.print(resarr[i][j] + " ");
-			}
-			System.out.print("\n");
-		}
-		System.out.printf("%d %d %d", round, n, m);
-	}
+        for (int i = 0; i < n; i++) {
+            board[i] = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
+        }
+        for (int i = 0; i < r; i++) {
+            rotation();
+        }
+        for (int[] row : board){
+            Arrays.stream(row).forEach(num -> System.out.print(num + " "));
+            System.out.println();
+        }
+    }
+
+    static void rotation() {
+        int[] dx = {0, 1, 0, -1}; // → ↓ ← ↑
+        int[] dy = {1, 0, -1, 0};
+        for (int i = 0; i < Math.min(m, n) / 2; i++) {
+            int d = 0; // 초기 방향
+            int x = i;
+            int y = i;
+
+            int first = board[i][i]; // 덮어씌운 후 마지막을 위함
+            while (true) {
+                int nx = x + dx[d];
+                int ny = y + dy[d];
+
+                if (i <= nx && nx < n - i && i <= ny && ny < m - i) {
+                    board[x][y] = board[nx][ny];
+
+                    x = nx;
+                    y = ny;
+                }
+                else {
+                    d++;
+                    if (d == 4) {
+                        break;
+                    }
+                }
+            }
+            board[i+1][i] = first;
+        }
+    }
 }
