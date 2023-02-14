@@ -1,5 +1,7 @@
 package com.ssafy.live.day07;
 
+import java.util.Arrays;
+
 public class CompleteBinaryTreeTest {
 
 	public static void main(String[] args) {
@@ -12,6 +14,7 @@ public class CompleteBinaryTreeTest {
 			tree.add((char)(65+i));
 		}
 		tree.bfs();
+		//System.out.println(tree.toString());
 	}
 
 }
