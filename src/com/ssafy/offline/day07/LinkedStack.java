@@ -1,4 +1,4 @@
-package com.ssafy.offline.day06;
+package com.ssafy.offline.day07;
 
 import com.ssafy.live.day06.Node;
 

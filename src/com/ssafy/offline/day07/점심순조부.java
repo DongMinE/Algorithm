@@ -1,4 +1,4 @@
-package com.ssafy.offline.day06;import java.util.Arrays;
+package com.ssafy.offline.day07;import java.util.Arrays;
 import java.util.Scanner;
 
 public class 점심순조부 {

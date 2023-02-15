@@ -1,4 +1,4 @@
-package com.ssafy.live.day07;
+package com.ssafy.live.day07_08;
 
 import java.util.Arrays;
 
@@ -13,8 +13,14 @@ public class CompleteBinaryTreeTest {
 		for (int i = 0; i < size; i++) {
 			tree.add((char)(65+i));
 		}
-		tree.bfs();
-		//System.out.println(tree.toString());
+		
+		 //tree.bfs();
+        tree.dfsByPreOrder();
+        tree.dfsByInoder();
+        tree.dfsByPostOrder();
+        
+        tree.dfs();
+        tree.dfsByPreOrder();
 	}
 
 }

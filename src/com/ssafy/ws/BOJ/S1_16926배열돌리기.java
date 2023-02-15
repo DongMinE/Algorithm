@@ -44,6 +44,7 @@ public class S1_16926배열돌리기 {
                 int ny = y + dy[d];
 
                 if (i <= nx && nx < n - i && i <= ny && ny < m - i) {
+                
                     board[x][y] = board[nx][ny];
 
                     x = nx;
@@ -57,6 +58,7 @@ public class S1_16926배열돌리기 {
                 }
             }
             board[i+1][i] = first;
+            System.out.println(first);
         }
     }
 }
