@@ -45,7 +45,6 @@ public class 모닝순조부 {
 		if (cnt == N) {
 			for (int i = 0; i <N; i++) {
 				if (!selected[i]) continue;
-				
 				System.out.print(input[i] + " ");
 			}
 			System.out.println();
@@ -70,6 +69,7 @@ public class 모닝순조부 {
 
 	private static void perm(int cnt) {
 		if (cnt == R) {
+			//System.out.println("순열");
 			System.out.println(Arrays.toString(numbers));
 			return;
 		}
