@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Solution_1952_수영장 {
+public class 김동민_SWEA_4012_요리사 {
 	static int[] plan, price;
     static int res;
     public static void main(String[] args) throws IOException {

@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class S5_2563_색종이 {
+public class 김동민_BOJ_2563_색종이 {
 	static boolean[][] arr = new boolean[101][101];
 
 	public static void main(String[] args) throws IOException {

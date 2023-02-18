@@ -1,4 +1,4 @@
-package com.ssafy.ws.SWEA.D3;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
