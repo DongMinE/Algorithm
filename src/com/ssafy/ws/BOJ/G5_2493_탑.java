@@ -1,4 +1,4 @@
-package com.ssafy.offline.day08;
+package com.ssafy.ws.BOJ;
 
 import java.io.BufferedReader;
 import java.io.IOException;
