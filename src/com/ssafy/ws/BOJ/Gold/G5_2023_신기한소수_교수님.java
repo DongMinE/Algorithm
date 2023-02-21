@@ -1,9 +1,9 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.ws.BOJ.Gold;
 
 import java.awt.Point;
 import java.util.Scanner;
 
-public class Main2023교수님 {
+public class G5_2023_신기한소수_교수님 {
 
 static int N, M;
 	

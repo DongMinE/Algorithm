@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.ws.BOJ.Silver;
 
 import java.util.ArrayDeque;
 import java.util.Arrays;

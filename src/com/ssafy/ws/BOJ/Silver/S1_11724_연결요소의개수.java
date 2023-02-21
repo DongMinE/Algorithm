@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ.nm;
+package com.ssafy.ws.BOJ.Silver;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

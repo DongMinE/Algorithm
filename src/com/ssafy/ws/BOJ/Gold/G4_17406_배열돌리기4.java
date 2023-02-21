@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.ws.BOJ.Gold;
 
 import java.util.Scanner;
 

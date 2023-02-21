@@ -1,8 +1,8 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.ws.BOJ.Gold;
 
 import java.util.Scanner;
 
-public class Main2023 {
+public class G5_2023_신기한소수 {
 	static int n,m;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

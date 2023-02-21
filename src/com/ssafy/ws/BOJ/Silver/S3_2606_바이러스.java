@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.ws.BOJ.Silver;
 
 import java.util.LinkedList;
 import java.util.Queue;
