@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class D5_1247_최적경로 {
+public class D5_1247_최적경로_보충 {
 	static int T, N;
 	static int Ans = Integer.MAX_VALUE;
 	static class Point{

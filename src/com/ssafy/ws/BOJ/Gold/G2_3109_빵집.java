@@ -26,8 +26,8 @@ public class G2_3109_빵집 {
 			if (back(i, 0))
 				ans++;
 		}
-		for (char[] v : arr)
-			System.out.println(Arrays.toString(v));
+//		for (char[] v : arr)
+//		System.out.println(Arrays.toString(v));
 		System.out.println(ans);
 	}
 
