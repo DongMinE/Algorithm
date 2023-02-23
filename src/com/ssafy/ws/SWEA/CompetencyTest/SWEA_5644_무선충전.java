@@ -1,91 +1,97 @@
 package com.ssafy.ws.SWEA.CompetencyTest;
 
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class SWEA_5644_무선충전 {
-	static int M, A;
-	static int[] Pa, Pb;
-	static int[][] chargePoint;
-	static int[][] drx = new int[][] { { 0, 0 }, { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
+	static int M, A, ans;
 
-	public static void main(String[] args) throws IOException {
-		System.setIn(new FileInputStream("data/swea5644.txt"));
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st;
-		int T = Integer.parseInt(br.readLine());
-		for (int tc = 1; tc <= T; tc++) {
-			st = new StringTokenizer(br.readLine());
-			M = Integer.parseInt(st.nextToken()); // 총 이동 거리
-			A = Integer.parseInt(st.nextToken()); // 충전기 갯수
-			chargePoint = new int[A + 1][4]; // 충전기 위치x, 위치y, 가능거리, 1회 양
-			Pa = new int[M]; // A이동 정보
-			Pb = new int[M]; // B이동 정보
+	static class User {
+		int r, c;
 
-			st = new StringTokenizer(br.readLine());
-			for (int i = 0; i < M; i++) {
-				Pa[i] = Integer.parseInt(st.nextToken());
-				//2 2 3 2 2 2 2 3 3 4 4 3 2 2 3 3 3 2 2 3
-			}
-
-			st = new StringTokenizer(br.readLine());
-			for (int i = 0; i < M; i++) {
-				Pb[i] = Integer.parseInt(st.nextToken());
-				//4 4 1 4 4 1 4 4 1 1 1 4 1 4 3 3 3 3 3 3
-
-			}
-			for (int i = 1; i <= A; i++) {
-				st = new StringTokenizer(br.readLine());
-				chargePoint[i][1] = Integer.parseInt(st.nextToken()); // x좌표
-				chargePoint[i][0] = Integer.parseInt(st.nextToken()); // y좌표
-				chargePoint[i][2] = Integer.parseInt(st.nextToken()); // 가능거리
-				chargePoint[i][3] = Integer.parseInt(st.nextToken()); // 1회 충전량
-
-			}
-
-			move(0,0,9,9);
-
-			// print();
+		User(int r, int c) {
+			this.r = r;
+			this.c = c;
 		}
 	}
 
-	private static void move(int x1, int y1, int x2, int y2) {
-		for (int i = 0; i < M; i++) {
-			Pa[i] = d1;
-			Pb[i] = d2;
-			if () 
+	//사용자 좌표 저장
+	static User u1, u2;	
+	//사용자 경로
+	static int[] path1, path2; 
+	static int[] dr = { 0, -1, 0, 1, 0 };
+	static int[] dc = { 0, 0, 1, 0, -1 };
+
+	static class BC {
+		int r, c, coverage, performance;
+
+		BC(int c, int r, int coverage, int performance) {
+			this.r = r;
+			this.c = c;
+			this.coverage = coverage;
+			this.performance = performance;
 		}
 	}
 
-	private static void print() {
-		System.out.println(Arrays.toString(Pa));
-		System.out.println(Arrays.toString(Pb));
-		System.out.println(Arrays.deepToString(chargePoint));
+	static BC[] bc;
+
+	public static void main(String[] args) throws Exception {
+		System.setIn(new FileInputStream("data/swea_5644.txt"));
+		Scanner sc = new Scanner(System.in);
+		int T = sc.nextInt(), t = 0;
+		while (t++ < T) {
+			M = sc.nextInt(); // 총이동시간
+			A = sc.nextInt(); // BC 갯수
+			path1 = new int[M + 1];
+			path2 = new int[M + 1];
+			for (int i = 1; i <= M; i++)
+				path1[i] = sc.nextInt();
+			for (int i = 1; i <= M; i++)
+				path2[i] = sc.nextInt();
+			bc = new BC[A];
+			for (int i = 0; i < A; i++)
+				bc[i] = new BC(sc.nextInt(), sc.nextInt(), sc.nextInt(), sc.nextInt());
+			u1 = new User(1, 1);
+			u2 = new User(10, 10);
+
+			solve();
+			System.out.println("#" + t + " " + ans);
+			ans = 0;
+		}
+
 	}
 
-	// 이동하기(몇번이나 이동함?)
+	private static void solve() {
+		for (int time = 0; time <= M; time++) { // 각 시간별 모든 충전소에 접근해서 가장 큰값을 얻는다.
+			// 사용자의 위치 이동(aUser, bUser)
+			u1.r += dr[path1[time]];
+			u1.c += dc[path1[time]];
+			u2.r += dr[path2[time]];
+			u2.c += dc[path2[time]];
+			plusCharge();
+		}
+	}
 
-	// 충전 가능한 범위 안에 사람이 있는가? - 있으면 충전
+	private static void plusCharge() {
+		int max = 0;
+		for (int a = 0; a < A; a++) { // aUser 선택 BC
+			for (int b = 0; b < A; b++) { // bUser 선택 BC
+//				 int sum = 0;
+				int aSum = getBCPerformance(a, u1); //i번째 충전기에 1번사람 됨? 되면 충전아니면 0
+				int bSum = getBCPerformance(b, u2); //i번쨰 충전기에 2번사람 됨?
+				/*
+				 * if (a != b) sum = aSum + bSum; 
+				 * else sum = Math.max(aSum, bSum); 
+				 * if (max < sum) max = sum;
+				 */
+				max = Math.max(max, (a != b) ? aSum + bSum : Math.max(aSum, bSum));
+			}
+		}
+		ans += max;
+	}
 
-	// 충전할 사람이 1명? 2명? - 2명이면 나눠야해
-
-	// 충전 범위가 다른 충전 범위와 겹치는가 - 겹치면 따로 1개씩 충전 or 1개로 P/2 충전
-
-	// 거리값 계산해 주는 메소드
-	
-}
-
-//좌표 저장
-class Point {
-	int x, y;
-
-	Point(int x, int y) {
-		this.x = x;
-		this.y = y;
+	private static int getBCPerformance(int idx, User user) {
+		return Math.abs(bc[idx].r - user.r) + Math.abs(bc[idx].c - user.c) <= bc[idx].coverage ? bc[idx].performance
+				: 0;
 	}
 }
