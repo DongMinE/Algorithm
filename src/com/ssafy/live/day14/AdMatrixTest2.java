@@ -43,8 +43,21 @@ public class AdMatrixTest2 {
 			adjMatrix[from] = new Node(to, adjMatrix[from]);
 			adjMatrix[to] = new Node(from, adjMatrix[to]);
 		}
-		bfs(0);
+		//bfs(0);
+		dfs(0, new boolean[V]);
 	}
+	
+	private static void dfs(int current, boolean[] visited) {
+		visited[current] = true;
+		System.out.println((char) (current + 65));
+		
+		for (Node temp = adjMatrix[current]; temp != null; temp = temp.link) {
+			if (!visited[temp.vertex]) {
+				dfs(temp.vertex, visited);
+			}
+		}
+	}
+	
 	private static void bfs(int start) {
 		Queue<Integer> queue = new ArrayDeque<>();
 		boolean[] visit = new boolean[V];

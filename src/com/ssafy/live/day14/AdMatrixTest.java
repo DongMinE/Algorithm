@@ -23,6 +23,17 @@ public class AdMatrixTest {
 			adjmatrix[to][from] = adjmatrix[from][to] = 1;
 		}
 		bfs(0);
+		dfs(0, new boolean[V]);
+	}
+	private static void dfs(int current, boolean[] visited) {
+		visited[current] = true;
+		System.out.println((char) (current + 65));
+		
+		for (int i = 0; i < V; i++) {
+			if (adjmatrix[current][i] != 0 && !visited[i]) {
+				dfs(i, visited);
+			}
+		}
 	}
 
 	private static void bfs(int start) {

@@ -62,7 +62,7 @@ public class SWEA_5644_무선충전 {
 	}
 
 	private static void solve() {
-		for (int time = 0; time <= M; time++) { // 각 시간별 모든 충전소에 접근해서 가장 큰값을 얻는다.
+		for (int time = 0; time < M+1; time++) { // 각 시간별 모든 충전소에 접근해서 가장 큰값을 얻는다.
 			// 사용자의 위치 이동(aUser, bUser)
 			u1.r += dr[path1[time]];
 			u1.c += dc[path1[time]];
@@ -76,15 +76,15 @@ public class SWEA_5644_무선충전 {
 		int max = 0;
 		for (int a = 0; a < A; a++) { // aUser 선택 BC
 			for (int b = 0; b < A; b++) { // bUser 선택 BC
-//				 int sum = 0;
+				 int sum = 0;
 				int aSum = getBCPerformance(a, u1); //i번째 충전기에 1번사람 됨? 되면 충전아니면 0
 				int bSum = getBCPerformance(b, u2); //i번쨰 충전기에 2번사람 됨?
-				/*
-				 * if (a != b) sum = aSum + bSum; 
-				 * else sum = Math.max(aSum, bSum); 
-				 * if (max < sum) max = sum;
-				 */
-				max = Math.max(max, (a != b) ? aSum + bSum : Math.max(aSum, bSum));
+				
+				 if (a != b) sum = aSum + bSum; 
+				 else sum = Math.max(aSum, bSum); 
+				 if (max < sum) max = sum;
+				 
+				//max = Math.max(max, (a != b) ? aSum + bSum : Math.max(aSum, bSum));
 			}
 		}
 		ans += max;
