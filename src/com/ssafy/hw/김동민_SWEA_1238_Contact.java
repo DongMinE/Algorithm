@@ -1,4 +1,4 @@
-package com.ssafy.ws.SWEA.D4;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class D4_1238_Contact {
+public class 김동민_SWEA_1238_Contact {
 	static int[][] people;
 	static int start, res;
 	static boolean[] visit;
@@ -16,7 +16,7 @@ public class D4_1238_Contact {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
-		for (int tc = 1; tc < 2; tc++) {
+		for (int tc = 1; tc < 11; tc++) {
 			st = new StringTokenizer(br.readLine());
 			people = new int[101][101];
 			visit = new boolean[101];
@@ -61,10 +61,10 @@ public class D4_1238_Contact {
 			//max값을 리스트에 저장
 			list.add(max);
 		}
-		for(int i = 0; i < list.size(); i++) {
-			System.out.print(list.get(i) + " ");
-		}
-		System.out.println();
+//		for(int i = 0; i < list.size(); i++) {
+//			System.out.print(list.get(i) + " ");
+//		}
+//		System.out.println();
 		
 		//리스트의 마지막값(최대레벨의 최대값을 출력
 		System.out.println(list.get(list.size() - 2));
