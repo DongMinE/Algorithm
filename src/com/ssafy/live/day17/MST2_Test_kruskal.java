@@ -3,6 +3,8 @@ package com.ssafy.live.day17;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import javax.naming.ldap.SortControl;
+
 public class MST2_Test_kruskal {
 	
 	static int V, E;
@@ -19,7 +21,6 @@ public class MST2_Test_kruskal {
         for (int i = 0; i < E; i++) {
             edgeList[i] = new Edge(sc.nextInt(), sc.nextInt(), sc.nextInt());
         }
-
         Arrays.sort(edgeList);
         makeSet();
 

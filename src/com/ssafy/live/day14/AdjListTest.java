@@ -16,7 +16,7 @@ public class AdjListTest {
 		V = sc.nextInt();
 		int E = sc.nextInt();
 
-		adjList = new ArrayList[V]; // 모두 0인 상태
+		adjList = new ArrayList[V]; // 모두 0	인 상태
 		for (int i = 0; i < V; i++) {
 			adjList[i] = new ArrayList<Integer>();
 		}
@@ -57,7 +57,6 @@ public class AdjListTest {
 		int current = 0;
 		while (!queue.isEmpty()) {
 			current = queue.poll();
-			System.out.println((char) (current + 65));
 
 			for (int vertex : adjList[current]) {
 				if (!visit[vertex]) {

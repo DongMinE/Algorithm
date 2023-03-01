@@ -38,7 +38,6 @@ public class D4_3124_최소스패닝트리 {
 						Integer.parseInt(st.nextToken())-1, 
 						Integer.parseInt(st.nextToken())));
 			}
-			
 			Collections.sort(edgeList);
 			makeSet();
 			
@@ -61,7 +60,7 @@ public class D4_3124_최소스패닝트리 {
 		return true;
 	}
 	private static void makeSet() {
-		p = new int[V+1];
+		p = new int[V];
 		for (int i = 0; i < V; i++) p[i] = i;
 		
 	}
