@@ -19,13 +19,13 @@ public class 모닝순조부 {
 		for (int i = 0; i < N; i++)
 			input[i] = sc.nextInt();
 
-		System.out.println("순열");
+		System.out.println("순열");  // 5개의 팀중에서 1,2,3등을 뽑는 방법
 		perm(0);
 
-		System.out.println("조합");
+		System.out.println("조합"); // 5명의 사람들 중 2인3각 달리기를 하는 조합
 		comb(0, 0);
 
-		System.out.println("부분집합 - 재귀");
+		System.out.println("부분집합 - 재귀"); // 5개의 악세사리중 착용할 수 있는 장신구의 조합
 		subset(0);
 
 		System.out.println("부분집합 - 비트");
@@ -86,7 +86,7 @@ public class 모닝순조부 {
 		for (int i = 0; i < (1 << N); i++) {
 			for (int j = 0; j <N; j++) {
 				if ((i & (1 << j)) == 0 ) continue;
-					System.out.print(input[j] + " ");
+				System.out.print(input[j] + " ");
 			}
 			System.out.println();
 		}
