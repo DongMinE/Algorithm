@@ -43,12 +43,12 @@ public class 김동민_SWEA_1238_Contact {
 		visit[x] = true;
 		int max = 0;
 		ArrayList<Integer> list = new ArrayList<>();
-
+		int current = 0;
 		while (!q.isEmpty()) {
 			int size = q.size();
 			max = -1;
 			for (int i = 0; i < size; i++) {
-				int current = q.poll();
+				current = q.poll();
 				for (int j = 1; j < 101; j++) {
 					if (people[current][j] == 1 && !visit[j]) {
 						q.offer(j);
@@ -59,6 +59,7 @@ public class 김동민_SWEA_1238_Contact {
 				}
 			}
 			//max값을 리스트에 저장
+			if (max == -1) break;
 			list.add(max);
 		}
 //		for(int i = 0; i < list.size(); i++) {
@@ -67,7 +68,7 @@ public class 김동민_SWEA_1238_Contact {
 //		System.out.println();
 		
 		//리스트의 마지막값(최대레벨의 최대값을 출력
-		System.out.println(list.get(list.size() - 2));
+		System.out.println(list.get(list.size() - 1));
 	}
 
 }
