@@ -1,4 +1,4 @@
-package com.ssafy.ws.SWEA.CompetencyTest;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class SWEA_5656_뱍돌깨기 {
+public class 김동민_SWEA_5656_벽돌깨기 {
 	private static class Point {
 		int x,y,size;
 
