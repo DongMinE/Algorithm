@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ;
+package com.ssafy.ws.BOJ.Gold;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,8 +11,8 @@ public class G4_17144_미세먼지안녕 {
 	static int R, C, T, res, cleanUpx, cleanDownx, remainDust;
 	static int[][] map;
 	static int[] dr = { -1, 1, 0, 0 }, dc = { 0, 0, -1, 1 };
-	static int[] upr = {0, -1, 0 , 1}, upc = {1, 0, -1, 0};
-	static int[] downr = {0, 1, 0, -1}, downc = {1, 0, -1, 0};
+	//static int[] upr = {-1,0,1,0}, upc = {0,1,0,0,-1};
+	//static int[] downr = {1,0,-1,0}, downc = {0,1,0,-1};
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -27,15 +27,15 @@ public class G4_17144_미세먼지안녕 {
 				map[i][j] = num;
 				if (num == -1) {
 					if (cleanUpx == 0) {
-						cleanUpx = i+1;
+						cleanUpx = i;
 					} else {
-						cleanDownx = i;
+						cleanDownx = cleanUpx+1;
 					}
 				}
 			}
 		}
-		//start(0);
-		System.out.println(cleanUpx + " " + cleanDownx);
+		start(0);
+		//System.out.println(cleanUpx + " " + cleanDownx);
 		
 	}
 
@@ -80,27 +80,21 @@ public class G4_17144_미세먼지안녕 {
 			}
 
 		}
-		// 잘 출력됐나 확인
-		for (int k = 0; k < R; k++) {
-			System.out.println(Arrays.toString(map[k]));
-		}
-		System.out.println();
-		
-		
+
 		// 1초후 공기정청기 돔
-		//위 순환
-		for (int i = 0+1; i < cleanUpx; i++) {
-			for (int j = 0; j < C; j++) {
-				
-			}
-		}
-		//아래 순환
-		for (int i = cleanDownx+1; i < R; i++) {
-			for (int j = 0; j < C; j++) {
-				
-			}
-		}
 		
+		//위 순환
+		for (int i = cleanUpx -1; i > 0; i--) map[i][0] = map[i-1][0];
+		for (int i = 0; i < C-1; i++) map[0][i] = map[0][i+1];
+		for (int i = 0;  i < cleanUpx; i++) map[i][C-1] = map[i+1][C-1];
+		for (int i = C-1; i > 1; i--) map[cleanUpx][i] = map[cleanUpx][i-1];
+		map[cleanUpx][1] = 0;
+		//아래 순환
+		for (int i = cleanDownx +1; i < R-1; i++) map[i][0] = map[i+1][0];
+		for (int i = 0; i < C-1; i++) map[R-1][i] = map[R-1][i+1];
+		for (int i = R -1; i > cleanDownx; i--) map[i][C-1] = map[i-1][C-1];
+		for (int i = C-1; i > 1; i--) map[cleanDownx][i] = map[cleanDownx][i-1];
+		map[cleanDownx][1] = 0;
 		
 		
 		start(cnt + 1);
