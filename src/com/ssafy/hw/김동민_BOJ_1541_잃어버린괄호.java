@@ -1,11 +1,11 @@
-package com.ssafy.ws.BOJ.Silver;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class S2_1541_잃어버린괄호 {
+public class 김동민_BOJ_1541_잃어버린괄호 {
 	public static void main(String[] args) throws IOException {
 		 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
