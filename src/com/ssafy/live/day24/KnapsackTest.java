@@ -3,7 +3,6 @@ package com.ssafy.live.day24;
 import java.util.Scanner;
 
 public class KnapsackTest {
-
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int N = sc.nextInt();	//물건 개수
