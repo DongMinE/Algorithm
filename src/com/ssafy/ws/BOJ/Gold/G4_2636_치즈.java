@@ -27,7 +27,11 @@ public class G4_2636_치즈 {
 		for (int[] a : arr) {
 			System.out.println(Arrays.toString(a));
 		}
-		check(arr)
+		check(arr);
+		
+	}
+	private static void check(int[][] arr2) {
+		// TODO Auto-generated method stub
 		
 	}
 }
