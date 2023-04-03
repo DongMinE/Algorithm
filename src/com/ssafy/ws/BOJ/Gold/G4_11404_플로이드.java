@@ -33,7 +33,7 @@ public class G4_11404_플로이드 {
 					continue; // 출발지와 경유지가 같다면 다음 출발지
 				for (int j = 1; j <= N; j++) {
 					if (i == j || k == j)
-						continue; // 경유지와 목적지가 같거나 출발지가 곧 목적지라면 패스
+						continue; //  경유지와 목적지가 같거나 출발지가 곧 목적지라면 패스
 					if (distance[i][j] > distance[i][k] + distance[k][j]) {
 						distance[i][j] = distance[i][k] + distance[k][j];
 					}
