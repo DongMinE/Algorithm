@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ.Gold;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +19,7 @@ class Node {
 	}
 }
 
-public class G4_17141_연구소2 {
+public class 김동민_BOJ_17141_연구소2 {
 	static int n, m, map[][], copymap[][], virusarr[];
 	static int min = Integer.MAX_VALUE;
 	static List<Node> virus = new ArrayList<>();
