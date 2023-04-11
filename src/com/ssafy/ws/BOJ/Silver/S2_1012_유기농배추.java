@@ -50,18 +50,20 @@ public class S2_1012_유기농배추 {
 	private static void bfs(int k, int l) {
 		Queue<int[]> que = new LinkedList<int[]>();
 		que.add(new int[] { k, l });
+		visited[k][l] = true;
 		
 		while (!que.isEmpty()) {
 			int[] num = que.poll();
-			visited[num[0]][num[1]] = true;
 
 			for (int i = 0; i < 4; i++) {
 				int newa = num[0] + dr[i];
 				int newb = num[1] + dc[i];
 
 				if (newa < n && newb < m && newa >= 0 && newb >= 0)
-					if (!visited[newa][newb] && arr[newa][newb] == 1)
+					if ( !visited[newa][newb] && arr[newa][newb] == 1) {
+						visited[newa][newb] = true;
 						que.offer(new int[] {newa, newb});
+					}
 			}
 		}
 
