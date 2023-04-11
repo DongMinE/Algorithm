@@ -1,4 +1,4 @@
-package com.ssafy.ws.SWEA.CompetencyTest;
+package com.ssafy.hw;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.StringTokenizer;
 
-public class 모의역략테스트_2383_점심식사시간2 {
+public class 김동민_SWEA_2383_점심식사시간 {
 	static int N, cnt, ans;
 	static final int M = 1, W = 2, D = 3, C = 4; // 이동중, 대기중 내려가는중, 완료
 
@@ -86,7 +86,7 @@ public class 모의역략테스트_2383_점심식사시간2 {
 			Person p = pList.get(i);
 			p.init(); //사람의 상태를 초기화
 			int no = selected[i]; 
-			p.arrivalTime = Math.abs(p.r-sList[no][0] + Math.abs(p.c - sList[no][1]));
+			p.arrivalTime = Math.abs(p.r-sList[no][0]) + Math.abs(p.c - sList[no][1]);
 			list[no].add(p);
 		}
 		int timeA = 0, timeB = 0;
