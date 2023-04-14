@@ -22,7 +22,7 @@ public class S1_2615_오목 {
 		}
 //		for (int[] a : arr) System.out.println(Arrays.toString(a));
 		
-		// ??? 왜 j를 먼저 돌려야 제일 왼쪽꺼가 나오는 거임???
+		// ??? 왜 j를 먼저 돌려야 제일 위쪽가 나오는 거임???  i ,j로 해도 위부터 나오는데 ㅡㅡ
 		for (int j = 0; j < 19; j++) {
 			for (int i = 0; i < 19; i++) {
 				if (arr[i][j] == 1 || arr[i][j] == 2) {
