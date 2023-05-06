@@ -3,7 +3,6 @@ package com.ssafy.ws.BOJ.Silver;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class S2_2167_2차원배열의합 {
@@ -26,14 +25,20 @@ public class S2_2167_2차원배열의합 {
 //        System.out.println(Arrays.deepToString(arr));
 //        부분 합 계산할 갯수
         int K = Integer.parseInt(br.readLine());
-        int[] sumarr = new int[4];
-        for (int k = 0; k < K; k++) {
+        while (K-- > 0) {
             st = new StringTokenizer(br.readLine());
-            for (int q = 0; q < 4; q++) {
-                sumarr[q] = Integer.parseInt(st.nextToken());
-            }
-            System.out.println(Arrays.toString(sumarr));
-        }
+            int i = Integer.parseInt(st.nextToken());
+            int j = Integer.parseInt(st.nextToken());
+            int x = Integer.parseInt(st.nextToken());
+            int y = Integer.parseInt(st.nextToken());
 
+            int sum = 0;
+            for (int a = i-1; a < x; a++) {
+                for (int b = j-1; b < y; b++) {
+                    sum += arr[a][b];
+                }
+            }
+            System.out.println(sum);
+        }
     }
 }
