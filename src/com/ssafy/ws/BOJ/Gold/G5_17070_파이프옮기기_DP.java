@@ -16,7 +16,7 @@ public class G5_17070_파이프옮기기_DP {
 
 		for(int i = 1; i < N; i++) {
 			for(int j = 2; j < N; j++) {
-				if(map[i][j] != 0) continue;
+				if(map[i][j] != 0) continue; 
 				
 				D[i][j][0] += D[i][j-1][0] + D[i][j-1][2];
 				D[i][j][1] += D[i-1][j][1] + D[i-1][j][2];
