@@ -20,6 +20,7 @@ public class S5_11866_요세푸스문제0 {
             list.add(i);
         }
         sb.append("<");
+        
 //        while (q.size() > 1) {
 //            // 방법1. 빼려는 숫자만큼 앞에 숫자를 뒤로 보내고 맨 앞에 있는 숫자 제거
 //            for (int j = 0; j < people - 1; j++) {
@@ -27,7 +28,7 @@ public class S5_11866_요세푸스문제0 {
 //            }
 //            sb.append(q.poll()).append(", ");
 //        }
-        
+
         // 방법2. 건너뛰는 숫자 -1 만큼 현재 idx에 더하고 큐의 크기 만큼 나눈 나머지값의 위치 제거
         int idx = 0;
         while (N > 1) {
