@@ -27,6 +27,7 @@ public class S5_11866_요세푸스문제0 {
 //            }
 //            sb.append(q.poll()).append(", ");
 //        }
+        
         // 방법2. 건너뛰는 숫자 -1 만큼 현재 idx에 더하고 큐의 크기 만큼 나눈 나머지값의 위치 제거
         int idx = 0;
         while (N > 1) {
