@@ -1,41 +1,37 @@
 package com.ssafy.ws.BOJ.Silver;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.Stack;
+
 public class S2_1874_스택수열 {
 
-    public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuffer sb = new StringBuffer();
+        int N = Integer.parseInt(br.readLine());
 
-        StringBuilder sb = new StringBuilder();	// 출력할 결과물 저장
-
-        int N = in.nextInt();
-
-        int[] stack = new int[N];
-
-        int idx = 0;
+        Stack<Integer> stack = new Stack<>();
         int start = 0;
+        for (int i = 0; i < N; i++) {
+            int val = Integer.parseInt(br.readLine());
 
-        // N 번 반복
-        while(N -- > 0) {
-            int value = in.nextInt();
-
-            if(value > start) {
-                // start + 1부터 입력받은 value 까지 push를 한다.
-                for(int i = start + 1; i <= value; i++) {
-                    stack[idx] = i;
-                    idx++;
-                    sb.append('+').append('\n');
+            if (val > start) {
+                for (int j = start + 1; j <= val; j++) {
+                    stack.push(j);
+                    sb.append("+").append("\n");
                 }
-                start = value; 	// 다음 push 할 때의 오름차순을 유지하기 위한 변수 초기화
+                start = val;
             }
 
-            // top에 있는 원소가 입력받은 값과 같이 않은 경우
-            else if(stack[idx - 1] != value) {
+            if (stack.peek() != val) {
                 System.out.println("NO");
-                System.exit(0);	//	return 으로 대체해도 됨
+                return;
             }
-
-            idx--;
-            sb.append('-').append('\n');
+            stack.pop();
+            sb.append("-").append("\n");
         }
         System.out.println(sb);
     }
