@@ -16,28 +16,26 @@ public class G5_1107_리모컨 {
         // 고장 채털 개수
         int m = Integer.parseInt(br.readLine());
         boolean[] broken = new boolean[10];
-        if (m == 0) {
-            String num = Integer.toString(n);
-            System.out.println(num.length());
-            return;
+
+        if (m > 0) {
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            for (int i = 0; i < m; i++) {
+                broken[Integer.parseInt(st.nextToken())] = true;
+            }
         }
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        // 고장 버튼 참거짓
-        for (int i = 0; i < m; i++) {
-            broken[Integer.parseInt(st.nextToken())] = true;
-        }
-        for (int i = 0; i <= 999999; i++) {
+
+        for (int i = 0; i <= 500000; i++) {
             String cur = Integer.toString(i);
             boolean check = false;
 
             for (int j = 0; j < cur.length(); j++) {
-                if(broken[cur.charAt(j) - '0']) {
-                   check = true;
-                   break;
+                if (broken[cur.charAt(j) - '0']) {
+                    check = true;
+                    break;
                 }
             }
-            if(!check) {
-              ans = Math.min(ans,cur.length() + Math.abs(n-i));
+            if (!check) {
+                ans = Math.min(ans, cur.length() + Math.abs(n - i));
             }
         }
         System.out.println(ans);
