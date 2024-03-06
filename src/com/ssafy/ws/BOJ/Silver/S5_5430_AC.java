@@ -1,4 +1,4 @@
-package com.ssafy.ws.BOJ.Gold;
+package com.ssafy.ws.BOJ.Silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
