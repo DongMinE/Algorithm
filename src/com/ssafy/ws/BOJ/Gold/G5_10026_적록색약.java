@@ -3,73 +3,75 @@ package com.ssafy.ws.BOJ.Gold;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.security.AllPermission;
-import java.util.Arrays;
+import java.util.ArrayDeque;
+import java.util.Queue;
 
 public class G5_10026_적록색약 {
-	static int N, cnt;
-	static char[][] arr, originarr;
-	static int[] dr = { 0, 0, -1, 1 }, dc = { 1, -1, 0, 0 };
-	static boolean[][] check;
 
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		N = Integer.parseInt(br.readLine());
-		arr = new char[N][N];
-		originarr = new char[N][N];
-		check = new boolean[N][N];
-		for (int i = 0; i < N; i++) {
-			arr[i] = br.readLine().toCharArray();
-			originarr[i] = arr[i];
+    static char[][] oriList, copyList;
+    static boolean[][] check, check2;
+    static int resRGB, res = 0;
+    static int n;
+    static int[] rx = {0, 0, 1, -1};
+    static int[] ry = {1, -1, 0, 0};
 
-		}
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        n = Integer.parseInt(br.readLine());
+        oriList = new char[n][n];
+        copyList = new char[n][n];
+        check = new boolean[n][n];
+        check2 = new boolean[n][n];
 
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (!check[i][j]) {
-				solve(i, j);
-				cnt++;
-				}
-			}
-		}
-		int ans1 = cnt;
-		cnt = 0;
-		check = new boolean[N][N];
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (arr[i][j]=='G')
-					arr[i][j]='R';
-			}
-		}
-		
-		for (int i = 0; i < N; i++) {
-			for (int j = 0; j < N; j++) {
-				if (!check[i][j]) {
-				solve(i, j);
-				cnt++;
-				}
-			}
-		}
-		int  ans2 = cnt;
-		System.out.println(ans1 + " " + ans2);
-	}
-	
+        for (int i = 0; i < n; i++) {
+            String color = br.readLine();
+            for (int j = 0; j < n; j++) {
+                char RGB = color.charAt(j);
+                oriList[i][j] = RGB;
+                if (RGB == 'R') {
+                    RGB = 'G';
+                }
+                copyList[i][j] = RGB;
+            }
+        }
+        //색 구역 확인
+        bfs(oriList, check, 0); // 정상인
+        bfs(copyList, check2, 1);// 적록색약인
 
-//		System.out.println(Arrays.deepToString(arr));
-//		System.out.println(Arrays.deepToString(originarr));
+        System.out.println(res + " " + resRGB);
+    }
 
-	private static void solve(int x, int y) {
-		char temp = arr[x][y];
-		check[x][y] = true;
-		for (int i = 0; i < 4; i++) {
-			int nx = x + dr[i];
-			int ny = y + dc[i];
-			if (nx < 0 || nx >= N || ny < 0 || ny >= N)
-				continue;
-			if (arr[nx][ny] == temp && !check[x][y]) {
-				cnt++;
-				solve(nx, ny);
-			}
-		}
-	}
+    private static void bfs(char[][] colorArray, boolean[][] checkRGB, int style) {
+        Queue<int[]> q = new ArrayDeque<>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!checkRGB[i][j]) {
+                    if (style == 0) {
+                        res++;
+                    } else if (style == 1) {
+                        resRGB++;
+                    }
+                    q.add(new int[]{i, j});
+
+                    while (!q.isEmpty()) {
+                        int[] pos = q.poll();
+                        int x = pos[0];
+                        int y = pos[1];
+
+                        for (int k = 0; k < 4; k++) {
+                            int dx = x + rx[k];
+                            int dy = y + ry[k];
+                            if (dx >= 0 && dx < n && dy >= 0 && dy < n) {
+                                if (!checkRGB[dx][dy] && colorArray[dx][dy] == colorArray[x][y]) {
+                                    q.add(new int[]{dx, dy});
+                                    checkRGB[dx][dy] = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
 }
