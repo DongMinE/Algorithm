@@ -9,24 +9,56 @@ public class G4_9019_DSLR {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());
 
-        String[] oder = new String[]{"D", "S", "L", "R"};
-
+        StringBuilder sb = new StringBuilder();
         while (T-- > 0) {
             StringTokenizer st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
 
-            for (int i = 0; i < 4; i++) {
+            Queue<Integer> q = new ArrayDeque<>(); //현재숫자 넣을 큐
+            String[] res = new String[10000]; //정답넣을 배열
+            Arrays.fill(res, ""); //정답배열 초기화
+            boolean[] check = new boolean[10000]; //방문처리 배열
 
-                if ()
-                O(oder[i], a);
+            q.add(a);
+            check[a] = true;
+
+            while (!check[b] && !q.isEmpty()) {
+                int current = q.poll();
+
+                int D = (2 * current) % 10000;
+                int S = (current == 0) ? 9999 : current - 1;
+                int L = (current % 1000) * 10 + current / 1000;
+                int R = (current % 10) * 1000 + current / 10;
+
+                if (!check[D]) {
+                    q.add(D);
+                    check[D] = true;
+                    res[D] = res[current] + "D";
+                }
+                if (!check[S]) {
+                    q.add(S);
+                    check[S] = true;
+                    res[S] = res[current] + "S";
+                }
+                if (!check[L]) {
+                    q.add(L);
+                    check[L] = true;
+                    res[L] = res[current] + "L";
+                }
+                if (!check[R]) {
+                    q.add(R);
+                    check[R] = true;
+                    res[R] = res[current] + "R";
+                }
             }
+            sb.append(res[b]).append("\n");
         }
-
+        System.out.println(sb);
 
     }
 
-    private static int O(String alpha, int current) {
+    private static int O(String alpha, int current, StringBuilder sb) {
         if (alpha.equals("D")) {
             current *= 2;
             if (current > 9999) {
@@ -49,4 +81,5 @@ public class G4_9019_DSLR {
 
         return current;
     }
+
 }
