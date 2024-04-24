@@ -10,7 +10,7 @@ public class G2_1167_트리의지름 {
         int to;
         int cost;
 
-        public Node(int to, int cost) {
+        Node(int to, int cost) {
             this.cost = cost;
             this.to = to;
         }
