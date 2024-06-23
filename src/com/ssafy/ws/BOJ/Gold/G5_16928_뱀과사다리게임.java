@@ -6,10 +6,11 @@ import java.util.*;
 
 public class G5_16928_뱀과사다리게임 {
 
-    static int[] origin = new int[107];
-    static Queue<Integer> q = new ArrayDeque<>();
+    static int[] origin = new int[101];
+    static int[] cnt = new int[101];
+    static boolean[] check = new boolean[101];
     static int n, m;
-    static int cnt = 0;
+    static int res;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,30 +22,39 @@ public class G5_16928_뱀과사다리게임 {
             st = new StringTokenizer(br.readLine());
             origin[Integer.parseInt(st.nextToken())] = Integer.parseInt(st.nextToken());
         }
-        sol(1);
+        sol();
     }
 
-    private static void sol(int current) {
-        q.add(current);
+    private static void sol() {
+        Queue<Integer> q = new ArrayDeque<>();
 
-        if (current >= 100) {
-            if (current == 100) {
-                System.out.println(cnt);
-            }
-            return;
-        }
+        q.add(1);
+        cnt[1] = 0;
+        check[1] = true;
 
         while (!q.isEmpty()) {
-            int out = q.poll();
+            int cur = q.poll();
+            if (cur == 100) {
+                System.out.println(cnt[cur]);
+                return;
+            }
 
             for (int i = 1; i <= 6; i++) {
-                cnt++;
-                if (origin[current] != 0) {
-                    current += origin[out];
-                } else {
-                    current += i;
+                int x = cur + i;
+                if (100 >= x && !check[x]) {
+                    check[x] = true;
+
+                    if (origin[x] != 0) {
+                        if (!check[origin[x]]) {
+                            q.offer(origin[x]);
+                            check[origin[x]] = true;
+                            cnt[origin[x]] = cnt[cur] + 1;
+                        }
+                    } else {
+                        q.offer(x);
+                        cnt[x] = cnt[cur] + 1;
+                    }
                 }
-                sol(current);
             }
         }
     }
