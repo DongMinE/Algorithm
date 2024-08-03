@@ -3,6 +3,7 @@ package com.ssafy.ws.BOJ.Silver;
 import java.io.*;
 import java.util.*;
 
+
 public class S1_1389_케빈베이컨의6단계법칙 {
 
     //친구 확인 배열
